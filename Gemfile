@@ -53,3 +53,5 @@ end
 gem 'prototype-rails'
 gem 'multi_json'
 gem 'strip_attributes'
+
+gem "omniauth-google-oauth2", "~> 0.3.0"

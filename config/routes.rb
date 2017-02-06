@@ -1,6 +1,4 @@
 Lexicon::Application.routes.draw do
-  get "sessions/create"
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -48,7 +46,11 @@ Lexicon::Application.routes.draw do
   #     resources :products
   #   end
 
-	scope "/(:locale)" do
+	scope "/(:locale)" do    
+    get 'auth/:provider/callback' => 'sessions#create'
+    get "sessions/create" => 'sessions#create'
+    get "sessions/close" => 'sessions#close', as: :logout
+
     get "parsable/index" => 'parsable#index'
     match 'lexemes/matching(/:matchtype)/:headword', :to => 'lexemes#matching', :as => :matching, :defaults => { :matchtype => 'contains' }
     match 'author(/:author(/:page))' => 'loci#matching'
@@ -95,7 +97,6 @@ Lexicon::Application.routes.draw do
   end
 
   match '/:locale' => 'editor#index'
-  get '/auth/:provider/callback', to: 'sessions#create'
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.

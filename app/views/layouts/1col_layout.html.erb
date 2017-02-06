@@ -33,7 +33,18 @@
 						t(".skip_to_the_content")
 					%></a><span class="hideme">.</span>
 					<!-- end: skip link navigation -->
-					<%= form_tag({:controller => :lexemes, :action => :show_by_headword}) do %>
+                    <span class="login">
+                    <% if session[:logged_in?] %>
+                        <img src="<%= session[:user_icon] %>" width="24" height="24" style="vertical-align:middle">
+                        <%= session[:user_email] %> | 
+                    <%= link_to t(".log_out"), logout_path %>
+                        <br clear="all"/>
+                    <% else %>
+                        <%= link_to t(".log_in"), '/auth/google_oauth2/' %>
+                    <% end %>
+                    </span>
+
+					<%= form_tag({:controller => :lexemes, :action => :show_by_headword}, { style: "padding-top:4px" }) do %>
                         <span class="type-text">
 					        <%= text_field_tag :headword, '', :size => 25, 
                                 :placeholder => t(".find_or_create_a_lexeme") %>
@@ -45,8 +56,6 @@
                             Lexeme::SUBSTRING) %>
                         </span>
 					<% end unless current_page? :controller => :editor, :action => :index %>
-
-					<!-- Login link will go here -->
 				</div>
 				<h1><%= page_title %></h1>
 

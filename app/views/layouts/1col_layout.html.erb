@@ -34,7 +34,7 @@
 					%></a><span class="hideme">.</span>
 					<!-- end: skip link navigation -->
                     <span class="login">
-                    <% if session[:logged_in?] %>
+                    <% if session[:logged_in] %>
                         <img src="<%= session[:user_icon] %>" width="24" height="24" style="vertical-align:middle">
                         <%= session[:user_email] %> | 
                     <%= link_to t(".log_out"), logout_path %>

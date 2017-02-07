@@ -4,9 +4,9 @@
   <div class="type-select">
       <label for="lexeme_dictionary_ids"><%= t('.dictionary') %></label>
       <% if session[:logged_in] %>
-          <%= grouped_collection_select(:lexeme, :dictionary_ids, dictionary_select, :last, :first, :last, :first, {}, { :multiple => :true }) %> 
+          <%= grouped_collection_select(:lexeme, :dictionary_ids, dictionary_select, :last, :first, :last, :first, {}, { :multiple => :true, :size => 6 }) %> 
       <% else %>
-          <%= collection_select(:lexeme, :dictionary_ids, Dictionary.find(:all), :id, :title, {}, { :multiple => :true }) %>
+          <%= collection_select(:lexeme, :dictionary_ids, Dictionary.find(:all), :id, :title, {}, { :multiple => :true, :size => 6 }) %>
       <% end %>
   </div>
 

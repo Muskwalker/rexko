@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20161025020333) do
+ActiveRecord::Schema.define(:version => 20170207174313) do
 
   create_table "attestations", :force => true do |t|
     t.integer  "locus_id"
@@ -380,6 +380,13 @@ ActiveRecord::Schema.define(:version => 20161025020333) do
     t.string   "publication_place"
     t.string   "url"
     t.date     "access_date"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "email"
+    t.text     "recent"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

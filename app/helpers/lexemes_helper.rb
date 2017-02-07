@@ -49,4 +49,28 @@ module LexemesHelper
     
     html_escape sentence_case(headwords.to_options_sentence(@dictionary.try(:definition_language)))
   end
+  
+  # List dictionaries.  Includes a separate group with the logged-in 
+  # user's most recent dictionaries, if applicable.
+  # 
+  # Returns an object suitable for grouped_collection_select.
+  def dictionary_select
+    dictionary_hash = {}
+    
+    if session[:logged_in] 
+      recent = User.find(session[:logged_in]).recent.compact
+      dictionary_hash["Recently used"] = [] if recent.any?
+      
+      recent.each do |dict|
+        dictionary_hash["Recently used"] << [dict.title, dict.id]
+      end
+    end
+    
+    dictionary_hash["All dictionaries"] = []
+    Dictionary.all.each do |dict|
+      dictionary_hash["All dictionaries"] << [dict.title, dict.id]
+    end
+
+    dictionary_hash.to_a
+  end
 end

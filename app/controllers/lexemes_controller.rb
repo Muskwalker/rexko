@@ -131,6 +131,8 @@ class LexemesController < ApplicationController
     respond_to do |format|
       if @lexeme.save
         flash[:notice] = t('lexemes.create.successful_create')
+        User.find(session[:logged_in]).update_recent(@lexeme.dictionaries) if session[:logged_in]
+        
         format.html do
           case params[:commit]
           when t('lexemes.form.save_and_continue_editing') 

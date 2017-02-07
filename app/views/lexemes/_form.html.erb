@@ -3,7 +3,11 @@
   <!-- Dictionary -->
   <div class="type-select">
       <label for="lexeme_dictionary_ids"><%= t('.dictionary') %></label>
-      <%= collection_select(:lexeme, :dictionary_ids, Dictionary.find(:all), :id, :title, {}, { :multiple => :true }) %> 
+      <% if session[:logged_in] %>
+          <%= grouped_collection_select(:lexeme, :dictionary_ids, dictionary_select, :last, :first, :last, :first, {}, { :multiple => :true }) %> 
+      <% else %>
+          <%= collection_select(:lexeme, :dictionary_ids, Dictionary.find(:all), :id, :title, {}, { :multiple => :true }) %>
+      <% end %>
   </div>
 
   <!-- Headword -->

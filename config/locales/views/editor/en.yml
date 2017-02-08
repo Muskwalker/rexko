@@ -2,6 +2,7 @@ en:
   editor:
     index:
       page title: "Editor's index"
+      page title with name: "%{name}'s index"
       tools: 'Tools'
       find_or_create_a_lexeme: "Find or create a lexeme:"
       match_type: "Match type"
@@ -21,4 +22,6 @@ en:
       lexemes: "Lexemes"
       loci: "Loci"
       sources: "Sources"
+      log_in: "Log in"
+      log_out: "Log out"
       layout_based_on_yaml_html: "Layout based on <a href='%{url}'>YAML</a>"

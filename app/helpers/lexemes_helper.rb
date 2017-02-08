@@ -59,16 +59,16 @@ module LexemesHelper
     
     if session[:logged_in] 
       recent = User.find(session[:logged_in]).recent.compact
-      dictionary_hash["Recently used"] = [] if recent.any?
+      dictionary_hash[t('helpers.dictionaries.recent')] = [] if recent.any?
       
       recent.each do |dict|
-        dictionary_hash["Recently used"] << [dict.title, dict.id]
+        dictionary_hash[t('helpers.dictionaries.recent')] << [dict.title, dict.id]
       end
     end
     
-    dictionary_hash["All dictionaries"] = []
+    dictionary_hash[t('helpers.dictionaries.all')] = []
     Dictionary.all.each do |dict|
-      dictionary_hash["All dictionaries"] << [dict.title, dict.id]
+      dictionary_hash[t('helpers.dictionaries.all')] << [dict.title, dict.id]
     end
 
     dictionary_hash.to_a

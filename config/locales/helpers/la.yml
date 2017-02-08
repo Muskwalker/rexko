@@ -30,3 +30,6 @@ la:
             untitled: "Sine titulo"
         language:
             default: "Lingua usitata"
+        dictionaries:
+            recent: "Nuper usa"
+            all: "Omnia lexica"

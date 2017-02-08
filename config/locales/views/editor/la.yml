@@ -2,6 +2,7 @@ la:
   editor:
     index:
       page title: 'Index editoris'
+      page title with name: "Index editoris %{name}"
       tools: 'Instrumenta'
       find_or_create_a_lexeme: 'Lexin quaerere aut referre:'
       match_type: 'Genus quaestionis'
@@ -21,4 +22,6 @@ la:
       lexemes: 'Lexes'
       loci: 'Loci'
       sources: 'Fontes'
+      log_in: Intrare
+      log_out: Exire
       layout_based_on_yaml_html: "Designatio ex <a href='%{url}'>YAML</a> derivata"

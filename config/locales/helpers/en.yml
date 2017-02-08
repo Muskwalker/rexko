@@ -17,3 +17,6 @@ en:
             untitled: "Untitled"
         language:
             default: "Default language"
+        dictionaries:
+            recent: "Recently used"
+            all: "All dictionaries"
